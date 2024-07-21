@@ -1,4 +1,5 @@
 import os
+from types import SimpleNamespace
 try:
     import requests
 except ImportError:
@@ -32,38 +33,12 @@ def get_enctoken(userid, password, twofa):
 
 
 class KiteApp:
-    # Products
-    PRODUCT_MIS = "MIS"
-    PRODUCT_CNC = "CNC"
-    PRODUCT_NRML = "NRML"
-    PRODUCT_CO = "CO"
-
-    # Order types
-    ORDER_TYPE_MARKET = "MARKET"
-    ORDER_TYPE_LIMIT = "LIMIT"
-    ORDER_TYPE_SLM = "SL-M"
-    ORDER_TYPE_SL = "SL"
-
-    # Varities
-    VARIETY_REGULAR = "regular"
-    VARIETY_CO = "co"
-    VARIETY_AMO = "amo"
-
-    # Transaction type
-    TRANSACTION_TYPE_BUY = "BUY"
-    TRANSACTION_TYPE_SELL = "SELL"
-
-    # Validity
-    VALIDITY_DAY = "DAY"
-    VALIDITY_IOC = "IOC"
-
-    # Exchanges
-    EXCHANGE_NSE = "NSE"
-    EXCHANGE_BSE = "BSE"
-    EXCHANGE_NFO = "NFO"
-    EXCHANGE_CDS = "CDS"
-    EXCHANGE_BFO = "BFO"
-    EXCHANGE_MCX = "MCX"
+    PRODUCT = SimpleNamespace(MIS='MIS', CNC='CNC', NRML='NRML', CO='CO')
+    ORDER_TYPE = SimpleNamespace(MARKET="MARKET", LIMIT="LIMIT", SLM="SL-M", SL="SL")
+    VARIETY = SimpleNamespace(REGULAR="regular", CO="co", AMO="amo")
+    TRANSACTION = SimpleNamespace(BUY='BUY', SELL='SELL')
+    VALIDITY = SimpleNamespace(DAY='DAY',IOC='IOC')
+    EXCHANGE = SimpleNamespace(NSE='NSE', BSE='BSE', NFO='NFO', CDS='CDS', BFO='BFO', MCX='MCX')
 
     def __init__(self, enctoken):
         self.enctoken = enctoken
